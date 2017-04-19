@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">WATCHAPPYO</string>
+    <string name="title_activity_main">WATCH</string>
+    <string name="action_settings">Settings</string>
+    <string name="about_us_text">
+
+        \t\tWe, the Watchapp team, decided\n
+        \t\tto create an app that will \n
+        \t\thelp you keep track the series, \n
+        \t\tmovies, or any kind of videos\n
+        \t\tyou\'ve watched \n\n
+        </string>
+    <string name="support_us_text">
+        Github: \n
+        https://github.com/brandon-flores/WApp
+    </string>
+    <string name="to_add_category">
+        \t\t\tClick on the add category button\n
+        \t\t\tand type the desired name of the category\n
+        \t\t\tNOTE: Categories should be unique!
+    </string>
+    <string name="to_add_video">
+        \t\t\tClick a category and type the name\n
+        \t\t\tof the video to be added\n
+        \t\t\tNOTE: Videos should be unique!
+    </string>
+    <string name="to_add_video_notes">
+        \t\t\tClick on the edit button on the video\n
+        \t\t\tyou want add a note and type\n
+        \t\t\tyour desired text
+    </string>
+</resources>

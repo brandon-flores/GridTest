@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context="bai.gridtest.Activities.LoginActivity">
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
+        tools:editable="true"
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="96dp"
+        android:layout_marginBottom="31dp"
+        android:layout_above="@+id/username"
+        android:layout_alignStart="@+id/username" />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:hint="username"
+        android:inputType="text"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
+        tools:editable="true"
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="96dp"
+        android:layout_marginBottom="28dp"
+        android:layout_above="@+id/password"
+        android:layout_alignStart="@+id/password" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:hint="password"
+        android:inputType="textPassword"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
+        tools:editable="true"
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="151dp"
+        android:layout_marginBottom="35dp"
+        android:layout_above="@+id/cpassword"
+        android:layout_alignStart="@+id/cpassword" />
+
+    <EditText
+        android:id="@+id/cpassword"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:hint="confirm password"
+        android:inputType="textPassword"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
+        tools:editable="true"
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="151dp"
+        android:layout_above="@+id/btnRegister"
+        android:layout_alignStart="@+id/btnRegister"
+        android:layout_marginBottom="20dp" />
+
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="92dp"
+        android:text="Register"
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="214dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WATCHAPP"
+        android:textColor="#ffffff"
+        android:textSize="50sp"
+        android:textStyle="bold|italic"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp" />
+
+</RelativeLayout>

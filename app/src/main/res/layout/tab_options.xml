@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/edit_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:onClick="onClick"
+                android:padding="10dp"
+                android:text="Edit Profile"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/help"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:onClick="onClick"
+                android:padding="10dp"
+                android:text="Help"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/toAddCategory"
+                android:layout_width="match_parent"
+                android:layout_height="29dp"
+                android:padding="5dp"
+                android:text="\tTo Add Category:"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/toAddCategoryText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="@string/to_add_video"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/toAddVideo"
+                android:layout_width="match_parent"
+                android:layout_height="29dp"
+                android:padding="5dp"
+                android:text="\tTo Add Video:"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/toAddVideoText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="@string/to_add_category"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/toAddVideoNotes"
+                android:layout_width="match_parent"
+                android:layout_height="29dp"
+                android:padding="5dp"
+                android:text="\tTo Add Video Notes:"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tpAddVideoNotesText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="@string/to_add_video_notes"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/aboutUs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="About Us"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/aboutUsText"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:padding="5dp"
+                android:text="@string/about_us_text"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/supportUs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Support Us"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/supportUsText"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:padding="5dp"
+                android:text="@string/support_us_text"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
