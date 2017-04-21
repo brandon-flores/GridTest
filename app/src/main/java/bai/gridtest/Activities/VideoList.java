@@ -4,11 +4,13 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,9 +37,8 @@ public class VideoList extends AppCompatActivity{
     private static Category category;
     private static DatabaseHelper db;
     private static VideoAdapter adapter;
-    private static ArrayAdapter<String> mAdapter;
     private static ArrayList<String> listVideos;
-    int i = 0;
+    private static ArrayList<String> listNotes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,13 +53,14 @@ public class VideoList extends AppCompatActivity{
 
         List<Video> videos = db.getAllUserVideos(user.getId(),category.getId());
         listVideos=new ArrayList<String>();
-
+        listNotes=new ArrayList<String>();
 
         for(Video v : videos){
             listVideos.add(v.getName());
+            Log.wtf("heya",db.getNote(user.getId(),v.getId()));
         }
 
-        adapter = new VideoAdapter(VideoList.this,listVideos);
+        adapter = new VideoAdapter(VideoList.this,listVideos,user.getId());
 
         initViews();
     }
@@ -72,21 +74,43 @@ public class VideoList extends AppCompatActivity{
 
 
 
-        mAdapter = new ArrayAdapter<String>(VideoList.this,
-                R.layout.video_item,R.id.vid_title,
-                listVideos);
-
         listView.setAdapter(adapter);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Video vid = new Video(db.getAllVideos().size(),vid_name.getText().toString());
-                db.addVideo(vid);
-                db.addUserVideo(user.getId(),category.getId(),vid.getId());
-                listVideos.add(vid_name.getText().toString());
-                adapter.notifyDataSetChanged();
+                /*Video vid = new Video(db.getAllVideos().size(),vid_name.getText().toString());
+                if(db.userHasVideo(vid.getId(),user.getId())){
+                    Toast.makeText(VideoList.this, "Video already exists in this category.", Toast.LENGTH_SHORT).show();
+                }else{
+                    db.addVideo(vid);
+                    db.addUserVideo(user.getId(),category.getId(),vid.getId());
+                    adapter.setValues(user.getId(),category.getId(),vid.getId());
+                    listVideos.add(vid_name.getText().toString());
+                    adapter.notifyDataSetChanged();
+                }*/
+                String videoTitle = vid_name.getText().toString();
+                if(db.checkVideo(videoTitle)){
+                    Video video = db.getVideo(videoTitle);
+                    //adapter.setValues(user.getId(),category.getId(),video.getId());
+                    if(db.userHasVideo(video.getId(), user.getId())){
+                        Toast.makeText(VideoList.this,
+                                "Video already exists!" + videoTitle, Toast.LENGTH_SHORT).show();
+                    }else{
+                        db.addUserVideo(user.getId(),category.getId(),video.getId());
+                        listVideos.add(vid_name.getText().toString());
+                        adapter.notifyDataSetChanged();
+                    }
+                }else{
+                    Video video = new Video(db.getAllVideos().size(), videoTitle);
+                    //adapter.setValues(user.getId(),category.getId(),video.getId());
+                    db.addVideo(video);
+                    db.addUserVideo(user.getId(),category.getId(),video.getId());
+                    listVideos.add(vid_name.getText().toString());
+                    adapter.notifyDataSetChanged();
+                }
+
             }
         });
 

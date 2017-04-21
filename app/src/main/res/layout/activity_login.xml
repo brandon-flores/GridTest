@@ -65,9 +65,9 @@
         android:id="@+id/watchapp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/username"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="67dp"
-        app:srcCompat="@drawable/watchapp" />
+        android:layout_marginTop="70dp"
+        app:srcCompat="@drawable/watchapp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

@@ -62,7 +62,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         String n = name.getText().toString();
         String pass  = password.getText().toString();
         String cpass  = cpassword.getText().toString();
-        if(uname!=null && n!=null && pass!=null && cpass!=null){
+        if(uname.length() >= 5 && n.length() >= 5 && pass.length() >= 5 && cpass.length() >= 5){
             if(db.checkUser(uname)){
                 Log.wtf("REGISTER REQUEST", "INVALID! ALREADY EXISTS");
                 Toast.makeText(this, "USERNAME ALREADY EXISTS!", Toast.LENGTH_SHORT).show();
@@ -79,7 +79,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 }
             }
         }else{
-            Toast.makeText(this,"PLEASE FILL UP THE FORM PROPERLY,",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"PLEASE FILL UP THE FORM PROPERLY. PASSWORD REQUIRES AT LEAST 5 CHARACTERS" +
+                    "\n " + n.length() + " " + pass.length(),Toast.LENGTH_SHORT).show();
         }
 
     }

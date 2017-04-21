@@ -23,7 +23,7 @@ import bai.gridtest.Models.Video;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
 
     // Database Name
     private static final String DATABASE_NAME = "UserManager.db";
@@ -210,7 +210,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //        db.delete()
 //    }
 
-    public void addUserVideoNotes(int userid, int categoryid, int videoid, String videoNote){
+    public void addUserVideoNotes(int userid, int videoid, String videoNote){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -218,14 +218,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         Log.wtf("OMGEE", "TENGENE!");
         db.update(TABLE_USERCATEGORYVIDEO, values, COLUMN_ALL_USER_ID + " = " + userid
-                + " AND " + COLUMN_ALL_USER_CATEGORY + " = " + categoryid + " AND "
-                + COLUMN_ALL_USER_VIDEO + " = " + videoid, null);
+                + " AND " + COLUMN_ALL_USER_VIDEO + " = " + videoid, null);
     }
 
     public void deleteUserVideo(int userid, int videoid){
         SQLiteDatabase db = this.getWritableDatabase();
 
-        db.delete(TABLE_USERCATEGORYVIDEO,COLUMN_ALL_USER_ID + " = " + userid
+        db.delete(TABLE_USERCATEGORYVIDEO,COLUMN_ALL_USER_ID + " = " + userid+ " AND "
                 + COLUMN_ALL_USER_VIDEO + " = " + videoid,null);
     }
 
@@ -254,6 +253,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursorCount > 0;
     }
 
+
+    public String getNote(int user_id,int video_id){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT " + COLUMN_ALL_VIDEO_NOTES + " FROM " + TABLE_USERCATEGORYVIDEO
+                + " WHERE " + COLUMN_ALL_USER_ID + " = " + user_id
+                + " AND " + COLUMN_ALL_USER_VIDEO + " = " + video_id
+                ;
+
+        Cursor c = db.rawQuery(query, null);
+
+
+        String notes = "";
+        if(c != null && c.moveToFirst()){
+            notes = c.getString(c.getColumnIndex(COLUMN_ALL_VIDEO_NOTES));
+            c.close();
+        }
+
+        Log.wtf("OMEEE",notes + " " + video_id);
+        return notes;
+    }
 
     public List<Video> getAllUserVideos(int user_id,int category_id){
         SQLiteDatabase db = this.getReadableDatabase();
@@ -288,7 +308,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String query = "SELECT " + COLUMN_CATEGORY_ID +"," + COLUMN_CATEGORY_NAME + " FROM " + TABLE_CATEGORY
                 + " INNER JOIN " + TABLE_USERCATEGORYVIDEO
                 + " ON " + COLUMN_ALL_USER_ID + " = " + user_id
-                + " AND " + COLUMN_ALL_USER_CATEGORY + " = " + COLUMN_CATEGORY_ID;
+                //+ " AND " + COLUMN_ALL_USER_CATEGORY + " = " + COLUMN_CATEGORY_ID
+                + " GROUP BY " + COLUMN_CATEGORY_ID
+                ;
 
         List<Category> categoryList = new ArrayList<>();
         Cursor c = db.rawQuery(query, null);
@@ -467,6 +489,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return categoryList;
     }
+
+
 
     //--------------------------------VIDEO---------------------------------//
     public void addVideo(Video video){

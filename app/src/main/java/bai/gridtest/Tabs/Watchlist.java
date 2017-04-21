@@ -60,8 +60,6 @@ public class Watchlist extends Fragment{
             c_title.add(c.getName());
         }
 
-
-
         adapter = new CategoryAdapter(view.getContext(),
                 c_title);
 
@@ -91,7 +89,7 @@ public class Watchlist extends Fragment{
 
 
     private void showDialog(){
-        final Button image = new Button(getActivity());
+        //final Button image = new Button(getActivity());
         final Dialog dialog = new Dialog(getActivity());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -117,11 +115,7 @@ public class Watchlist extends Fragment{
                         db.addUserCategory(user.getId(),category.getId());
                         c_title.add(category.getName());
                         adapter.notifyDataSetChanged();
-
-                        Toast.makeText(getActivity(),
-                                "ImageButton is clicked!", Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
-
                     }
                 }else{
                     Category category = new Category(db.getAllCategories().size(), categoryTitle);
@@ -131,8 +125,6 @@ public class Watchlist extends Fragment{
                     c_title.add(category.getName());
                     adapter.notifyDataSetChanged();
 
-                    Toast.makeText(getActivity(),
-                            "ImageButton is clicked!", Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
                 }
 
@@ -142,7 +134,6 @@ public class Watchlist extends Fragment{
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 dialog.dismiss();
             }
         });
